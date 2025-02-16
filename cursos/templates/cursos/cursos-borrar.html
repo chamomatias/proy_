@@ -1,0 +1,10 @@
+
+{% block content %}
+    <h2>Borrar Curso</h2>
+    <p>¿Estás seguro de que deseas borrar el curso "{{ object.nombre }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Borrar</button>
+        <a href="{% url 'cursos-leer' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock %}

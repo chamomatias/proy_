@@ -1,0 +1,14 @@
+
+{% block content %}
+    <h2>Detalles del Curso</h2>
+    <p><strong>ID:</strong> {{ curso.id }}</p>
+    <p><strong>Nombre:</strong> {{ curso.nombre }}</p>
+    <p><strong>Descripción:</strong> {{ curso.descripcion }}</p>
+    <p><strong>Fecha de Inicio:</strong> {{ curso.fecha_inicio }}</p>
+    <p><strong>Fecha de Fin:</strong> {{ curso.fecha_fin }}</p>
+    <p><strong>Activo:</strong> {{ curso.activo|yesno:"Sí,No" }}</p>
+
+    <a href="{% url 'cursos-leer' %}" class="btn btn-secondary">Volver</a>
+    <a href="{% url 'cursos-actualizar' curso.id %}" class="btn btn-warning">Actualizar</a>
+    <a href="{% url 'cursos-borrar' curso.id %}" class="btn btn-danger">Borrar</a>
+{% endblock %}

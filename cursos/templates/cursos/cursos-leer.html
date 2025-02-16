@@ -1,0 +1,33 @@
+
+{% block content %}
+    <h2>Lista de Cursos</h2>
+    <a href="{% url 'cursos-crear' %}" class="btn btn-primary">Nuevo Curso</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Activo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+                <tr>
+                    <td>{{ curso.id }}</td>
+                    <td>{{ curso.nombre }}</td>
+                    <td>{{ curso.fecha_inicio }}</td>
+                    <td>{{ curso.fecha_fin }}</td>
+                    <td>{{ curso.activo|yesno:"Sí,No" }}</td>
+                    <td>
+                        <a href="{% url 'cursos-detallar' curso.id %}" class="btn btn-info">Ver</a>
+                        <a href="{% url 'cursos-actualizar' curso.id %}" class="btn btn-warning">Actualizar</a>
+                        <a href="{% url 'cursos-borrar' curso.id %}" class="btn btn-danger">Borrar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
