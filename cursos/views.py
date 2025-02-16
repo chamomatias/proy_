@@ -1,8 +1,11 @@
 from django.urls import reverse_lazy
-from django.views.generic import  CreateView, ListView, UpdateView, DeleteView, DetailView
+from django.views.generic import  TemplateView ,CreateView, ListView, UpdateView, DeleteView, DetailView
 from .models import Cursos
 from .forms import CursosForm
 
+
+class InicioView(TemplateView):
+    template_name = 'index.html'
 
 # Crear curso
 class CursoCreate(CreateView):
