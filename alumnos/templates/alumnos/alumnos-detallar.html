@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Detalles del Alumno</h2>
+<ul>
+    <li><strong>Nombre:</strong> {{ object.nombre }}</li>
+    <li><strong>Apellido:</strong> {{ object.apellido }}</li>
+    <li><strong>Email:</strong> {{ object.email }}</li>
+    <li><strong>Teléfono:</strong> {{ object.telefono }}</li>
+    <li><strong>Fecha de Nacimiento:</strong> {{ object.fecha_nacimiento }}</li>
+    <li><strong>Estado:</strong> {% if object.activo %} Activo {% else %} Inactivo {% endif %}</li>
+</ul>
+<a href="{% url 'alumnos_lista' %}" class="btn btn-primary">Volver</a>
+{% endblock %}

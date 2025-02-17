@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Alumnos</h2>
+<a href="{% url 'alumnos_crear' %}" class="btn btn-primary">Agregar Alumno</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Curso</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for alumno in alumnos %}
+        <tr>
+            <td>{{ alumno.nombre }}</td>
+            <td>{{ alumno.apellido }}</td>
+            <td>{{ alumno.email }}</td>
+            <td>
+                {% if alumno.curso %}
+                    {{ alumno.curso.nombre }}
+                {% else %}
+                    Sin curso
+                {% endif %}
+            </td>
+            
+            <td>
+                <a href="{% url 'alumnos_detallar' alumno.id %}" class="btn btn-info btn-sm">Ver</a>
+                <a href="{% url 'alumnos_editar' alumno.id %}" class="btn btn-warning btn-sm">Actualizar</a>
+                <a href="{% url 'alumnos_eliminar' alumno.id %}" class="btn btn-danger btn-sm">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
